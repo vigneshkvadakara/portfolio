@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VIGNESH K | Full Stack Developer</title>
+    <title>VIGNESH K | FullStack Developer</title>
     <meta name="description"
         content="React Native Developer with 4+ years of experience in React native and flutter applications.">
     <meta name="keywords" content="Vignesh k, React Native, flutter, Software Developer">
@@ -325,11 +325,20 @@
 
         .mobile-menu {
             transform: translateX(100%);
-            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), visibility 0s linear 0.4s;
+            pointer-events: none;
+            visibility: hidden;
         }
 
         .mobile-menu.open {
             transform: translateX(0);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), visibility 0s linear 0s;
+            pointer-events: auto;
+            visibility: visible;
+        }
+
+        body.menu-open {
+            overflow: hidden;
         }
 
         .badge-glow {
@@ -393,27 +402,29 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                 </svg></button>
         </div>
-        <div id="mobile-menu"
-            class="mobile-menu fixed inset-0 z-50 bg-dark-900/95 backdrop-blur-xl md:hidden flex flex-col items-center justify-center gap-8">
-            <button id="menu-close" class="absolute top-6 right-6 text-gray-400 hover:text-white"
-                aria-label="Close menu"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                </svg></button>
-            <a href="#about"
-                class="mobile-nav-link text-2xl font-light text-gray-300 hover:text-white transition-colors">About</a>
-            <a href="#skills"
-                class="mobile-nav-link text-2xl font-light text-gray-300 hover:text-white transition-colors">Skills</a>
-            <a href="#projects"
-                class="mobile-nav-link text-2xl font-light text-gray-300 hover:text-white transition-colors">Projects</a>
-            <a href="#experience"
-                class="mobile-nav-link text-2xl font-light text-gray-300 hover:text-white transition-colors">Experience</a>
-            <a href="#contact"
-                class="mobile-nav-link text-2xl font-light text-gray-300 hover:text-white transition-colors">Contact</a>
-            <a href="JUSTIN-PJ-Resume.pdf" download
-                class="px-6 py-2.5 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium text-sm flex items-center gap-2"><i
-                    class="fas fa-download text-xs"></i> Download Resume</a>
-        </div>
     </nav>
+
+    <div id="mobile-menu"
+        class="mobile-menu fixed inset-0 z-[100] w-full min-h-[100dvh] bg-dark-900/95 backdrop-blur-xl md:hidden flex flex-col items-center justify-center gap-8 pt-[env(safe-area-inset-top,0px)] pr-[env(safe-area-inset-right,0px)] pb-[env(safe-area-inset-bottom,0px)] pl-[env(safe-area-inset-left,0px)]">
+        <button id="menu-close"
+            class="absolute top-[max(1.5rem,env(safe-area-inset-top,0px))] right-[max(1.5rem,env(safe-area-inset-right,0px))] text-gray-400 hover:text-white"
+            aria-label="Close menu"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg></button>
+        <a href="#about"
+            class="mobile-nav-link text-2xl font-light text-gray-300 hover:text-white transition-colors">About</a>
+        <a href="#skills"
+            class="mobile-nav-link text-2xl font-light text-gray-300 hover:text-white transition-colors">Skills</a>
+        <a href="#projects"
+            class="mobile-nav-link text-2xl font-light text-gray-300 hover:text-white transition-colors">Projects</a>
+        <a href="#experience"
+            class="mobile-nav-link text-2xl font-light text-gray-300 hover:text-white transition-colors">Experience</a>
+        <a href="#contact"
+            class="mobile-nav-link text-2xl font-light text-gray-300 hover:text-white transition-colors">Contact</a>
+        <a href="JUSTIN-PJ-Resume.pdf" download
+            class="px-6 py-2.5 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium text-sm flex items-center gap-2"><i
+                class="fas fa-download text-xs"></i> Download Resume</a>
+    </div>
 
     <!-- Hero Section -->
     <section id="hero" class="relative min-h-screen flex items-center justify-center px-6 pt-20">
@@ -1126,7 +1137,7 @@
         (function () { const t = ['React Native Developer', 'Flutter Developer', 'Mobile app Specialist', 'Problem Solver'], el = document.getElementById('typed-text'); let ti = 0, ci = 0, del = false, sp = 80; function tp() { const ct = t[ti]; if (del) { el.textContent = ct.substring(0, ci - 1); ci--; sp = 40 } else { el.textContent = ct.substring(0, ci + 1); ci++; sp = 80 } if (!del && ci === ct.length) { sp = 2000; del = true } else if (del && ci === 0) { del = false; ti = (ti + 1) % t.length; sp = 500 } setTimeout(tp, sp) } tp() })();
 
         // Navbar
-        (function () { const nb = document.getElementById('navbar'), mm = document.getElementById('mobile-menu'); document.getElementById('menu-toggle').addEventListener('click', () => mm.classList.add('open')); document.getElementById('menu-close').addEventListener('click', () => mm.classList.remove('open')); document.querySelectorAll('.mobile-nav-link').forEach(l => l.addEventListener('click', () => mm.classList.remove('open'))); addEventListener('scroll', () => { if (scrollY > 50) { nb.classList.add('glass'); nb.style.borderBottom = '1px solid rgba(255,255,255,0.05)' } else { nb.classList.remove('glass'); nb.style.borderBottom = 'none' } }); const ss = document.querySelectorAll('section[id]'), nl = document.querySelectorAll('.nav-link'); addEventListener('scroll', () => { let c = ''; ss.forEach(s => { if (scrollY >= s.offsetTop - 100) c = s.id }); nl.forEach(l => { l.classList.remove('active'); if (l.getAttribute('href') === '#' + c) l.classList.add('active') }) }) })();
+        (function () { const nb = document.getElementById('navbar'), mm = document.getElementById('mobile-menu'); const openMenu = () => { mm.classList.add('open'); document.body.classList.add('menu-open') }; const closeMenu = () => { mm.classList.remove('open'); document.body.classList.remove('menu-open') }; document.getElementById('menu-toggle').addEventListener('click', openMenu); document.getElementById('menu-close').addEventListener('click', closeMenu); document.querySelectorAll('.mobile-nav-link').forEach(l => l.addEventListener('click', closeMenu)); addEventListener('scroll', () => { if (scrollY > 50) { nb.classList.add('glass'); nb.style.borderBottom = '1px solid rgba(255,255,255,0.05)' } else { nb.classList.remove('glass'); nb.style.borderBottom = 'none' } }); const ss = document.querySelectorAll('section[id]'), nl = document.querySelectorAll('.nav-link'); addEventListener('scroll', () => { let c = ''; ss.forEach(s => { if (scrollY >= s.offsetTop - 100) c = s.id }); nl.forEach(l => { l.classList.remove('active'); if (l.getAttribute('href') === '#' + c) l.classList.add('active') }) }) })();
 
         // Scroll reveal
         (function () { const o = new IntersectionObserver(e => { e.forEach(en => { if (en.isIntersecting) { en.target.classList.add('visible'); en.target.querySelectorAll('.skill-bar-fill').forEach(b => setTimeout(() => b.classList.add('animated'), 300)); en.target.querySelectorAll('[data-count]').forEach(el => ac(el)) } }) }, { threshold: .15, rootMargin: '0px 0px -50px 0px' }); document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.reveal-scale').forEach(el => o.observe(el)) })(); function ac(el) { const t = +el.dataset.count, d = 2000, s = performance.now(); function u(c) { const p = Math.min((c - s) / d, 1); el.textContent = Math.round((1 - Math.pow(1 - p, 3)) * t) + '+'; if (p < 1) requestAnimationFrame(u) } requestAnimationFrame(u) }
